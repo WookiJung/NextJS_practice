@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
-import { ChromeMessage, ChromeMessageResponse, Sender, getCurrentTabUId, getCurrentTabUrl, getBojId } from './types';
+import { ChromeMessage, Sender, getCurrentTabUId, getCurrentTabUrl} from './types';
 import './App.css'
 
 const App = () => {
