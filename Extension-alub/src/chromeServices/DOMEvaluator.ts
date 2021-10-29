@@ -16,7 +16,24 @@ const messagesFromReactAppListener = (
 ) => {
 
     const isValidated = validateSender(message, sender);
-
+    if (isValidated && message.message === 'copy') {
+        let codeLang = ''
+        const answerCode = document.getElementsByName("source")[0].innerText
+        const lang = document.querySelector(".table-striped")?.childNodes[1]?.childNodes[0]?.childNodes[7]?.textContent
+        console.log(answerCode)
+        if (typeof(lang) === 'string'){
+            if(lang.includes('Py')){codeLang = 'py'}
+            if(lang.includes('Java')){codeLang = 'java'}
+            if(lang.includes('C')){codeLang = 'C'}
+            if(lang.includes('Ruby')){codeLang = 'rbw'}
+            if(lang.includes('Rust')){codeLang = 'rs'}
+            if(lang.includes('Go')){codeLang = 'go'}
+            if(lang.includes('node')){codeLang = 'js'}
+            if(lang.includes('Text')){codeLang = 'txt'}
+            if(lang.includes('Swift')){codeLang = 'swift'}
+        } 
+        response(`lang: ${codeLang} copy complete`);
+    }
     if (isValidated && message.message === 'Hello from React') {
         response('Hello from content.js');
     }
@@ -25,10 +42,12 @@ const messagesFromReactAppListener = (
         const search = document.getElementById("search")
         search?.parentElement?.removeChild(search)
     }
+
     if (isValidated && message.message === "get boj info") {
         const bojid = document.querySelector(".loginbar .username")?.innerHTML
         response(bojid)
     }
+
     if (isValidated && message.message === "add status table") {
         const userId = document.querySelector(".loginbar .username")?.innerHTML
         // loginID와 푼사람의 ID가 같은지 확인하기 위해서 특정함.
@@ -65,7 +84,7 @@ const messagesFromReactAppListener = (
                 }
             }
         } 
-        response("추가했어요!5")
+        response("추가했어요!6")
     }
     
 }

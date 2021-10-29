@@ -30,6 +30,23 @@ const App = () => {
         });
     };
 
+    
+    const sendCopyMessage = () => {
+        const message: ChromeMessage = {
+            from: Sender.React,
+            message: "copy",
+        }
+
+        getCurrentTabUId((id) => {
+            id && chrome.tabs.sendMessage(
+                id,
+                message,
+                (responseFromContentScript) => {
+                    setResponseFromContent(responseFromContentScript);
+                });
+        });
+    };
+
     const sendRemoveMessage = () => {
         const message: ChromeMessage = {
             from: Sender.React,
@@ -87,6 +104,7 @@ const App = () => {
                 <button onClick={sendTestMessage}> Send Message from chrome</button>
                 <button onClick={sendRemoveMessage}> Delete logo</button>
                 <button onClick={getBojInfo}> getinfo</button>
+                <button style={{color : 'white', backgroundColor: "black"}} onClick={sendCopyMessage}>copy the code</button>
                 
                 <p>Response from content:</p>
                 <p>
