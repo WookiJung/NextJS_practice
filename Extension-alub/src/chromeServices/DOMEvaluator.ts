@@ -16,6 +16,10 @@ const messagesFromReactAppListener = (
     sender: chrome.runtime.MessageSender,
     response: MessageResponse
 ) => {
+    if (message.message === "add status table") {
+        addStatusTable();
+        response("테이블에 버튼추가 끝")
+    }
 
 
     const isValidated = validateSender(message, sender);
@@ -66,9 +70,7 @@ const main = () => {
 
 
 main();
-if (currentUrl.includes("acmicpc.net/status")){
-    addStatusTable();
-}
+
 if (currentUrl.includes("acmicpc.net/source")){
     console.log("카피하려고?")
     copyCode();

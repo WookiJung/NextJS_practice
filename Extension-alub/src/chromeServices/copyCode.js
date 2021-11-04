@@ -40,11 +40,7 @@ const copyCode = () => {
             problemNumber: problemNumber,
             site: site,
           }
-    
-  
-  
-      
-      
+
       // if (correct){
         //   axios.post(
       //     "api/user/commits", 
