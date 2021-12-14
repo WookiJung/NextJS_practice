@@ -1,6 +1,5 @@
 import { ChromeMessage, Sender, getCurrentTabUrl } from "../types";
 import copyCode from "./copyCode";
-import addStatusTable from "./status-table.js"
 import createTimer from "./createTimer";
 type MessageResponse = (response?: any) => void
 const currentUrl = window.location.href
@@ -19,7 +18,7 @@ const messagesFromReactAppListener = (
 
     const isValidated = validateSender(message, sender);
     
-    if (message.message.message === "add status table") {
+    if (message.message === "add status table") {
         
         console.log("메세지는감.")
         response("애드댓")
@@ -62,9 +61,6 @@ if (currentUrl.includes("acmicpc.net/source")){
     console.log("카피되긴함?")
     copyCode();
 }
-if (currentUrl.includes("acmicpc.net/status")){
-    console.log("추가되긴함?")
-    // addStatusTable();
-}
+
 
 

@@ -12,13 +12,11 @@
       "48": "logo192.png",
       "128": "logo192.png"
   },
-  "permissions": ["tabs", "storage", "activeTab", "alarms", "notifications", "scripting"],
+  "permissions": ["tabs", "storage", "activeTab", "alarms", "notifications"],
   "background": {
       "service_worker" : "background.js"
   },
-  "host_permissions": [
-    "https://*.acmicpc.net/*", "https://programmers.co.kr/*"
-  ],
+
   "content_scripts": [
     {
         "matches": ["https://*.acmicpc.net/*", "https://programmers.co.kr/*", "https://*/*"],

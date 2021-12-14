@@ -57,6 +57,21 @@ const App = () => {
                 });
         });
     }
+  const addgo = () => {
+    const message: ChromeMessage = {
+        from: Sender.React,
+        message: "add status table"}
+        
+
+    getCurrentTabUId((id) => {
+        id && chrome.tabs.sendMessage(
+            id,
+            message,
+            (response) => {
+                setResponseFromContent(response);
+            });
+    });
+  }
     const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         if(event.target.id === "hour") {setHour(event.target.value)}
         if(event.target.id === "minute") {setMinute(event.target.value)}
@@ -159,7 +174,6 @@ const App = () => {
               <hr className="hr" />
               <div className="timer-setting">
                 <h4 className="middle-title">타이머 설정</h4>
-                <form>
                   <div className="form-check form-switch flex-grid">
                     <label className="form-check-label" htmlFor="timer-show">
                       타이머 보이기1
@@ -169,6 +183,7 @@ const App = () => {
                   <div className="flex-row default-time-set">
                     <span className="timer-show-title">기본 시간 설정</span>
                     <div className="flex-row">
+                <form>
                     <input
                         type="number"
                         className="form-control form-control-sm"
@@ -206,18 +221,18 @@ const App = () => {
                       >
                         설정
                       </button>
+                </form>
                         
 
                     </div>
                   </div>
-                </form>
               </div>
               <hr className="hr" />
               <button
                 className="btn btn-lg btn-primary"
                 id="git-repo-button"
                 type="button"
-                onClick={() => deleteToken()}
+                onClick={addgo}
               >
                 Git Repo 설정
               </button>
